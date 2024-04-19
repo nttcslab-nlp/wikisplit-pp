@@ -34,5 +34,4 @@ python src/train.py --method "split_reverse" --model_name "t5-small" --dataset_d
 
 ## License
 
-The original WikiSplit is distributed under the CC-BY-SA 4.0 license.
-This dataset follows suit and is distributed under the CC-BY-SA 4.0 license.
+See [https://github.com/nttcslab-nlp/wikisplit-pp/blob/main/LICENSE.txt].
