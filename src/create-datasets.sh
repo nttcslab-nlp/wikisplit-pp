@@ -15,7 +15,7 @@ wiki-split() {
     # perl ./src/detokenizer.perl -l en -penn <./datasets/wiki-split/raw/test.tsv >./datasets/wiki-split/detokenized/test.tsv &
     wait
 
-    poetry run python src/datasets/wiki_split.py
+    python src/datasets/wiki_split.py
 }
 
 min-wiki-split() {
@@ -24,7 +24,7 @@ min-wiki-split() {
     cp ./related-works/min-wiki-split/MinWikiSplit_v1_INLG2019.txt ./datasets/min-wiki-split/raw/all.txt
     perl ./src/detokenizer.perl -l en -penn <./datasets/min-wiki-split/raw/all.txt >./datasets/min-wiki-split/detokenized/all.txt
 
-    poetry run python src/datasets/min_wiki_split.py
+    python src/datasets/min_wiki_split.py
 }
 
 bisect() {
@@ -35,7 +35,7 @@ bisect() {
     perl ./src/detokenizer.perl -l en -penn <./datasets/bisect/raw/train.src >./datasets/bisect/detokenized/train.src
     perl ./src/detokenizer.perl -l en -penn <./datasets/bisect/raw/train.dst >./datasets/bisect/detokenized/train.dst
 
-    poetry run python src/datasets/run_bisect.py
+    python src/datasets/run_bisect.py
 }
 
 hsplit() {
@@ -55,7 +55,7 @@ hsplit() {
     perl ./src/detokenizer.perl -l en -penn <./datasets/hsplit/raw/simple-4.txt >./datasets/hsplit/detokenized/simple-4.txt &
     wait
 
-    poetry run python src/datasets/hsplit.py
+    python src/datasets/hsplit.py
 }
 
 # cont-bm, wiki-bm
@@ -65,7 +65,7 @@ small-but-mighty() {
     cp related-works/small-but-mighty/split-and-rephrase-data/benchmarks/contract-benchmark.tsv ./datasets/small-but-mighty/raw/cont-bm.tsv
     cp related-works/small-but-mighty/split-and-rephrase-data/benchmarks/wiki-benchmark.tsv ./datasets/small-but-mighty/raw/wiki-bm.tsv
 
-    poetry run python src/datasets/small_but_mighty.py
+    python src/datasets/small_but_mighty.py
 }
 
 for func in wiki-split min-wiki-split bisect hsplit small-but-mighty; do
@@ -77,15 +77,15 @@ wait
 echo "Done preprocessing!"
 
 for dataset_name in wiki-split min-wiki-split bisect; do
-    poetry run python src/datasets/nli_flitering.py \
+    python src/datasets/nli_flitering.py \
         --dataset_name $dataset_name \
         --processor_name roberta \
         --device "cuda:0" &
-    poetry run python src/datasets/nli_flitering.py \
+    python src/datasets/nli_flitering.py \
         --dataset_name $dataset_name \
         --processor_name deberta \
         --device "cuda:1" &
-    poetry run python src/datasets/nli_flitering.py \
+    python src/datasets/nli_flitering.py \
         --dataset_name $dataset_name \
         --processor_name true \
         --batch_size 16 \
@@ -93,6 +93,6 @@ for dataset_name in wiki-split min-wiki-split bisect; do
     wait
 done
 
-poetry run python src/datasets/entailment_intersection.py --dataset_dir datasets/wiki-split
-poetry run python src/datasets/entailment_intersection.py --dataset_dir datasets/min-wiki-split
-poetry run python src/datasets/entailment_intersection.py --dataset_dir datasets/bisect
+python src/datasets/entailment_intersection.py --dataset_dir datasets/wiki-split
+python src/datasets/entailment_intersection.py --dataset_dir datasets/min-wiki-split
+python src/datasets/entailment_intersection.py --dataset_dir datasets/bisect

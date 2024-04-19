@@ -122,4 +122,4 @@ done
 
 wait
 
-poetry run python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"

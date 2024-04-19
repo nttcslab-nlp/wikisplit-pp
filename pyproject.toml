@@ -2,9 +2,7 @@
 name = "split-and-rephrase"
 version = "0.1.0"
 description = "Add your description here"
-authors = [
-    { name = "hppRC", email = "hpp.ricecake@gmail.com" },
-]
+authors = [{ name = "hppRC", email = "hpp.ricecake@gmail.com" }]
 dependencies = [
     "torch==2.1.0+cu118",
     "pydantic>=2.4.2",
@@ -39,11 +37,7 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = [
-    "pip>=23.3.2",
-    "setuptools>=69.0.3",
-    "wheel>=0.42.0",
-]
+dev-dependencies = ["pip>=23.3.2", "setuptools>=69.0.3", "wheel>=0.42.0"]
 
 [[tool.rye.sources]]
 name = "torch"
@@ -57,7 +51,15 @@ allow-direct-references = true
 packages = ["src"]
 
 [tool.ruff]
-exclude = [".git", ".mypy_cache", ".ruff_cache", ".venv", "outputs", "datasets", "src/prev"]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "outputs",
+    "datasets",
+    "src/prev",
+]
 line-length = 120
 target-version = "py310"
 
@@ -69,13 +71,13 @@ select = ["F", "E", "W", "I", "B", "PL", "UP", "N"]
 ignore = [
     "PLR0913", # Too many arguments in function definition
     "PLR2004", # Magic value used in comparison
-    "N812", # Lowercase imported as non-lowercase
-    "N806", # Lowercase imported as non-lowercase
-    "F403", # unable to detect undefined names
-    "E501", # Line too long
-    "N999", # Invalid module name
+    "N812",    # Lowercase imported as non-lowercase
+    "N806",    # Lowercase imported as non-lowercase
+    "F403",    # unable to detect undefined names
+    "E501",    # Line too long
+    "N999",    # Invalid module name
     "PLR0912", # too many branches
-    "B905", # zip strict
+    "B905",    # zip strict
     "N802",
     "PLW2901",
     "PLR0915",

@@ -12,6 +12,26 @@ We did not use the test split of WikiSplit as it is being used for the construct
 We re-divided the train, val, and tune splits of WikiSplit into new train, val, and test splits for intrinsic evaluations.
 
 
+## Instrallation & Preparation
+
+
+```bash
+# install dependencies
+rye sync
+source ./.venv/bin/activate
+
+# download and preprocess the datasets
+bash src/download.sh
+bash src/create-datasets.sh
+```
+
+
+## Training
+
+```bash
+python src/train.py --method "split_reverse" --model_name "t5-small" --dataset_dir "./datasets" --dataset_name "wiki-split/entailment"
+```
+
 ## License
 
 The original WikiSplit is distributed under the CC-BY-SA 4.0 license.
