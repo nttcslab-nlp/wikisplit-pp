@@ -34,4 +34,7 @@ python src/train.py --method "split_reverse" --model_name "t5-small" --dataset_d
 
 ## License
 
-See [https://github.com/nttcslab-nlp/wikisplit-pp/blob/main/LICENSE.txt].
+This software is released under the NTT License, see [LICENSE.txt](https://github.com/nttcslab-nlp/wikisplit-pp/blob/main/LICENSE.txt).  
+According to the license, it is not allowed to create pull requests. Please feel free to send issues.
+
+[Our dataset](https://huggingface.co/datasets/cl-nagoya/wikisplit-pp) is publicly available on HuggingFace under the CC BY-SA 4.0 license.
